@@ -14,4 +14,4 @@ def test_state(state_url):
     """
     response = requests.get(state_url)
     assert response.status_code == 200
-    assert response.json() == {'statusCode': 0, 'state': 'OК'} 
+    assert response.json() == {'statusCode': 0, 'state': 'OК'}
