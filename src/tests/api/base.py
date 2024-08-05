@@ -49,8 +49,7 @@ class BaseOperationTest(ABC):
         response = self.make_request(operation_url, data)
         assert response.status_code == 200
         assert response.json() == expected_result, (
-            f"Ожидалось: {expected_result},\n"
-            f"получено: {response.json()}"
+            f"Ожидалось: {expected_result}, Получено: {response.json()}"
         )
 
     @pytest.mark.skip(reason="Должен быть переопределен в дочернем классе")
@@ -74,8 +73,7 @@ class BaseOperationTest(ABC):
         response = self.make_request(operation_url, data)
         assert response.status_code == 200
         assert response.json() == expected_result, (
-            f"Ожидалось: {expected_result},\n"
-            f"получено: {response.json()}"
+            f"Ожидалось: {expected_result}, Получено: {response.json()}"
         )
 
     @pytest.mark.parametrize(
@@ -107,22 +105,21 @@ class BaseOperationTest(ABC):
         response = self.make_request(operation_url, data)
         assert response.status_code == 200
         assert response.json() == expected_result, (
-            f"Ожидалось: {expected_result},\n"
-            f"получено: {response.json()}"
+            f"Ожидалось: {expected_result}, Получено: {response.json()}"
         )
 
     @pytest.mark.parametrize(
         "data, expected_result",
         [
-            ({"x": 1, "y": "foobar"},
+            ({"x": 1, "y": "1"},
              {"statusCode": 3, "statusMessage":
               "Значения параметров должны быть целыми"}),
 
-            ({"x": "foobar", "y": 1},
+            ({"x": "1", "y": 1},
              {"statusCode": 3,
               "statusMessage": "Значения параметров должны быть целыми"}),
 
-            ({"x": "foobar", "y": "foobar"},
+            ({"x": "1", "y": "1"},
              {"statusCode": 3,
               "statusMessage": "Значения параметров должны быть целыми"}),
 
@@ -153,8 +150,7 @@ class BaseOperationTest(ABC):
         response = self.make_request(operation_url, data)
         assert response.status_code == 200
         assert response.json() == expected_result, (
-            f"Ожидалось: {expected_result},\n"
-            f"получено: {response.json()}"
+            f"Ожидалось: {expected_result}, Получено: {response.json()}"
         )
 
     @pytest.mark.parametrize(
@@ -193,14 +189,13 @@ class BaseOperationTest(ABC):
         print(response.json())
         assert response.status_code == 200
         assert response.json() == expected_result, (
-            f"Ожидалось: {expected_result},\n"
-            f"получено: {response.json()}"
+            f"Ожидалось: {expected_result}, Получено: {response.json()}"
         )
 
     @pytest.mark.parametrize(
         "data, expected_result",
         [
-            ({"x": 1, "y": "foobar"},
+            ({"x": 1, "y": 1},
              {"statusCode": 5, "statusMessage": "Не допустимый формат json"}),
 
             ((("x", 1), ("y", 1)),
@@ -220,6 +215,5 @@ class BaseOperationTest(ABC):
         response = requests.post(operation_url, data=data)
         assert response.status_code == 200
         assert response.json() == expected_result, (
-            f"Ожидалось: {expected_result},\n"
-            f"получено: {response.json()}"
+            f"Ожидалось: {expected_result}, Получено: {response.json()}"
         )
