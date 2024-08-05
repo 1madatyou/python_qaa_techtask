@@ -97,5 +97,4 @@ def test_stop(start_app: Generator[Tuple[str, str, str, str], None, None]):
 def test_restart_when_already_stopped():
     """Тест команды restart, когда сервер уже остановлен или не запущен"""
     stdout, stderr = run_command("restart")
-    print(stderr, stdout)
     assert 'Веб-калькулятор не запущен. Используйте команду "start"' in stdout

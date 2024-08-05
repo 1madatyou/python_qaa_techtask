@@ -184,9 +184,7 @@ class BaseOperationTest(ABC):
         превышают допустимые пределы.
         Ожидается возвращение кода статуса 4 с сообщением.
         """
-        print(data)
         response = self.make_request(operation_url, data)
-        print(response.json())
         assert response.status_code == 200
         assert response.json() == expected_result, (
             f"Ожидалось: {expected_result}, Получено: {response.json()}"
